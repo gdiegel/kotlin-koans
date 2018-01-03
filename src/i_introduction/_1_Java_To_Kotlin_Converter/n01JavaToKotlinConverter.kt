@@ -10,9 +10,9 @@ fun todoTask1(collection: Collection<Int>): Nothing = TODO(
         paste it into the Kotlin file and let IDE convert it.
         Please use automatic conversion for this task only.
     """,
-    references = { JavaCode1().task1(collection) })
+        references = *arrayOf({ JavaCode1().task1(collection) }))
 
 
 fun task1(collection: Collection<Int>): String {
-    todoTask1(collection)
+    return JavaCode1().task1(collection)
 }
