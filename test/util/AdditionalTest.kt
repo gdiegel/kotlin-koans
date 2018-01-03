@@ -10,7 +10,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 class AdditionalTest {
-    @Test fun test() {
+    @Test
+    fun test() {
         invokeTests(
                 { N01JavaToKotlinConverterKtTest().collection() },
                 { N03DefaultArgumentsKtTest().testDefaultAndNamedParams() },
@@ -26,8 +27,8 @@ class AdditionalTest {
         for (test in tests) {
             try {
                 test()
+            } catch (e: NotImplementedException) {
             }
-            catch (e: NotImplementedException) {}
         }
     }
 }
