@@ -26,13 +26,13 @@ fun example() = "13.06.1992".matches(getPattern().toRegex()) //true
 val month = "(JAN|FEB|MAR|APR|MAY|JUN|JUL|AUG|SEP|OCT|NOV|DEC)"
 
 fun todoTask5(): Nothing = TODO(
-    """
+        """
         Task 5.
         Copy the body of 'getPattern()' to the 'task5()' function below
         and rewrite it in such a way that it matches '13 JUN 1992'.
         Use the 'month' variable.
     """,
-    documentation = doc5(),
-    references = { getPattern(); month })
+        documentation = doc5(),
+        references = { getPattern(); month })
 
-fun task5(): String = todoTask5()
+fun task5(): String = """\d{2} """ + month + """ \d{4}"""
