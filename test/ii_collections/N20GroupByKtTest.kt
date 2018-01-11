@@ -6,7 +6,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class N20GroupByKtTest {
-    @Test fun testGroupCustomersByCity() {
+    @Test
+    fun testGroupCustomersByCity() {
         assertEquals(groupedByCities, shop.groupCustomersByCity())
     }
 }
