@@ -4,9 +4,9 @@ import ii_collections.data.*
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
-
 class N22FoldKtTest {
-    @Test fun testGetProductsOrderedByAllCustomers() {
+    @Test
+    fun testGetProductsOrderedByAllCustomers() {
         val testShop = shop("test shop for 'fold'",
                 customer(lucas, Canberra,
                         order(idea),
