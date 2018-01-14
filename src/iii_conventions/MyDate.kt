@@ -3,10 +3,9 @@ package iii_conventions
 data class MyDate(val year: Int, val month: Int, val dayOfMonth: Int) : Comparable<MyDate> {
     override fun compareTo(other: MyDate): Int {
         return when {
-            this.year > other.year -> 1
-            this.year == other.year && (this.month > other.month) -> 1
-            this.year == other.year && this.month == other.month && (this.dayOfMonth > other.dayOfMonth) -> 1
-            this.year == other.year && this.month == other.month && this.dayOfMonth == other.dayOfMonth -> 0
+            this.year != other.year -> this.year - other.year
+            this.year == other.year && this.month != other.month -> this.month - other.month
+            this.year == other.year && this.month == other.month -> this.dayOfMonth - other.dayOfMonth
             else -> -1
         }
     }
@@ -22,12 +21,28 @@ enum class TimeInterval {
     YEAR
 }
 
-class DateRange(val start: MyDate, val endInclusive: MyDate) {
+class DateRange(val start: MyDate, val endInclusive: MyDate) : Iterable<MyDate> {
+    override fun iterator(): Iterator<MyDate> {
+        return MyDateIterator(DateRange(start, endInclusive))
+    }
+
     operator fun contains(other: MyDate): Boolean {
         return when {
-            listOf(0, 1).contains(other.compareTo(start)) && listOf(0, -1).contains(other.compareTo(endInclusive)) -> true
+            start <= other && other <= endInclusive -> true
             else -> false
         }
     }
+}
 
+class MyDateIterator(val d: DateRange) : Iterator<MyDate> {
+    var current = d.start
+    override fun next(): MyDate {
+        val c = current
+        current = c.nextDay()
+        return c
+    }
+
+    override fun hasNext(): Boolean {
+        return current <= d.endInclusive
+    }
 }
