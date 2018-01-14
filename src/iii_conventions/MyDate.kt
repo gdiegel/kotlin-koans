@@ -20,4 +20,12 @@ enum class TimeInterval {
     YEAR
 }
 
-class DateRange(val start: MyDate, val endInclusive: MyDate)
+class DateRange(val start: MyDate, val endInclusive: MyDate) {
+    operator fun contains(other: MyDate): Boolean {
+        return when {
+            listOf(0, 1).contains(other.compareTo(start)) && listOf(0, -1).contains(other.compareTo(endInclusive)) -> true
+            else -> false
+        }
+    }
+
+}
