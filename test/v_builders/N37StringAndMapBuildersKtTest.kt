@@ -5,7 +5,8 @@ import org.junit.Test
 import java.util.*
 
 class N37StringAndMapBuildersKtTest {
-    @Test fun testBuildMap() {
+    @Test
+    fun testBuildMap() {
         val map = task37()
         val expected = HashMap<Int, String>()
         for (i in 0..10) {
