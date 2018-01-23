@@ -4,11 +4,7 @@ import util.TODO
 import util.doc34
 
 class LazyPropertyUsingDelegates(val initializer: () -> Int) {
-    var invoked: Int? = null
-    val lazyValue: Int by lazy {
-        invoked = initializer()
-        invoked!!
-    }
+    val lazyValue: Int by lazy { initializer() }
 }
 
 fun todoTask34(): Lazy<Int> = TODO(
