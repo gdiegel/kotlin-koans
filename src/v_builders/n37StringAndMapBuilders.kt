@@ -28,8 +28,8 @@ fun todoTask37(): Nothing = TODO(
     """
 )
 
-fun buildMap(build: HashMap<Int, String>.() -> Unit): HashMap<Int, String> {
-    val map = HashMap<Int, String>()
+fun <K, V> buildMap(build: HashMap<K, V>.() -> Unit): HashMap<K, V> {
+    val map = HashMap<K, V>()
     map.build()
     return map
 }
